@@ -17,10 +17,6 @@ To repozytorium zawiera projekt
 
 ## Project structure
 
-- `src/` – kod źródłowy
-- `data/` – dane wejściowe/wyjściowe
-- `README.md` – ten plik
-
 ## Authors
 
 
