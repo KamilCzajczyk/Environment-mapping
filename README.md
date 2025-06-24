@@ -21,6 +21,9 @@ $ python3 main.py
 
 ## Project structure
 
+- `bridge/` , `bridge2/` , `yokohama2/` , `yokohama3/` folders with cubemap images
+- `engine/` files needed to run the program 
+
 ## Authors
 
 Kamil Czajczyk
