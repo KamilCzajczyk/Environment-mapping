@@ -70,11 +70,8 @@ Zawiera funkcje renderowania obiektów 3D.
 - `draw_skybox(cube_map_id, camera_pos)`:
 Renderuje skybox, centruje skybox na pozycji kamery, używa cube map jako tekstury tła. Skybox porusza się wraz z kamerą, przez co nie można dotrzeć do krawędzi skyboxa.
 
-- `draw_reflective_cube(cube_map_id, camera_pos)`
-- `draw_reflective_sphere(cube_map_id, camera_pos)`
-- `draw_reflective_torus(cube_map_id, camera_pos)`
-
-Te metody renderują odpowiednio sześcian, sferę oraz torus, obliczają wektory normalne oraz odbicia korzystając z funkcji zawartych w `utils.py`
+- `draw_reflective_cube(cube_map_id, camera_pos)`,
+`draw_reflective_sphere(cube_map_id, camera_pos)`,`draw_reflective_torus(cube_map_id, camera_pos)`: Te metody renderują odpowiednio sześcian, sferę oraz torus, obliczają wektory normalne oraz odbicia korzystając z funkcji zawartych w `utils.py`
 
 
 ### engine/cubemap.py
