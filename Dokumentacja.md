@@ -21,17 +21,17 @@ Punkt wejściowy aplikacji. Inicjalizuje renderer i obsługuje błędy.
 ### config.py
 Plik konfiguracyjny aplikacji:
 - **Parametry okna**: 
-    -rozdzielczość
-    -tytuł 
-    -FPS
+    - rozdzielczość
+    - tytuł 
+    - FPS
 - **Ustawienia kamery**: 
-    -prędkość
-    -czułość myszy
-    -ograniczenia
+    - prędkość
+    - czułość myszy
+    - ograniczenia
 - **Parametry renderowania**: 
-    -kolory, 
-    -clipping planes, 
-    -FOV
+    - kolory
+    - clipping planes
+    - FOV
 - **Listy dostępnych cube map**
 
 ### engine/camera.py
