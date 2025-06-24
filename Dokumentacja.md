@@ -54,48 +54,46 @@ System kamery pierwszoosobowej
 System renderowania aplikacji.
 
 #### Klasa CubeMapRenderer
-Zarządza całym procesem renderowania:
+Zarządza całym procesem renderowania
 
 ##### Metody
 - `_handle_events()`: Obsługa zdarzeń (zamknięcie, przełączanie cube map)
 - `_render_frame()`: Renderowanie jednej klatki
 - `_switch_cubemap()`: Przełączanie między różnymi skyboxami
-- `_load_current_skybox()`: 
+- `_load_current_skybox()`: Załadowanie cubemapy z folderu w celu stworzenia cubemapy
 
 ### engine/objects.py
 Zawiera funkcje renderowania obiektów 3D.
 
-#### Funkcje renderowania
+#### Metody
 
-##### `draw_skybox(cube_map_id, camera_pos)`
+- `draw_skybox(cube_map_id, camera_pos)`:
 Renderuje skybox, centruje skybox na pozycji kamery, używa cube map jako tekstury tła. Skybox porusza się wraz z kamerą, przez co nie można dotrzeć do krawędzi skyboxa.
 
-##### `draw_reflective_cube(cube_map_id, camera_pos)`
+- `draw_reflective_cube(cube_map_id, camera_pos)`
 Renderuje odbijający sześcian, oblicza wektory odbić dla każdego wierzchołka, używa cube map do teksturowania powierzchni
 
-##### `draw_reflective_sphere(cube_map_id, camera_pos)`
+- `draw_reflective_sphere(cube_map_id, camera_pos)`
  Generuje geometrię sfery przez triangulację i oblicza odbicia na podstawie normalnych powierzchni
 
-##### `draw_reflective_torus(cube_map_id, camera_pos)`
+- `draw_reflective_torus(cube_map_id, camera_pos)`
 Renderuje odbijający torus i oblicza normalne wymagane do tworzenia odbić
 
 ### engine/cubemap.py
 Obsługuje ładowanie i tworzenie cube map.
+#### Metody
+- `create_cubemap_from_images(folder, face_files)`:
+Ładuje 6 obrazów reprezentujących ściany sześcianu i Tworzy teksturę cube map w OpenGL
 
-#### Funkcja `create_cubemap_from_images(folder, face_files)`
-- Ładuje 6 obrazów reprezentujących ściany sześcianu
-- Tworzy teksturę cube map w OpenGL
-
-#### Funkcja `_create_fallback_face(face_target, filename)`
+- `_create_fallback_face(face_target, filename)`:
 Tworzy kolorową teksturę zastępczą dla brakujących plików.
 
 ### engine/utils.py
 Funkcje matematyczne wymagane do tworzenia efektu odbicia
-
-#### `normalize(v)`
+- `normalize(v)`
 Normalizuje wektor 3D do długości jednostkowej.
 
-#### `reflect(incident, normal)`
+- `reflect(incident, normal)`
 Oblicza wektor odbity na podstawie wektora padającego i normalnej powierzchni.
 
 
