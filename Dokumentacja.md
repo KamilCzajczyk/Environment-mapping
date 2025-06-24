@@ -6,17 +6,12 @@ Aplikacja 3D implementująca mapowanie środowiska (environment mapping) przy u�
 
 ## Funkcjonalności
 
-### Główne cechy
-- **Skybox**: Renderowanie tła 360° przy użyciu cube map
-- **Odbicia środowiska**: Realistyczne odbicia na powierzchniach obiektów
-- **Interaktywna kamera**: Sterowanie pierwszoosobowe z myszą i klawiaturą
-- **Przełączanie środowisk**: Zmiana cube map w czasie rzeczywistym
-- **Oświetlenie**: System oświetlenia OpenGL
-
-### Obiekty z odbiciami
-- **Sześcian odbijający**: Centralny obiekt z powierzchnią lustrzaną
-- **Sfera odbijająca**: Sfera z gładkimi odbiciami
-- **Torus odbijający**: Torus z zakrzywionymi odbiciami
+### Główne elementy
+- Renderowanie tła skybox przy użyciu cube map
+- Odbicia na powierzchniach obiektów tworzone za pomocą cube map
+- Sterowanie pierwszoosobowe za pomocą myszy i klawiatury
+- Zmiana cube map w czasie rzeczywistym
+- Obiekty z odbiciami - sfera, sześcian oraz torus
 
 ## Pliki źródłowe
 
@@ -25,18 +20,27 @@ Punkt wejściowy aplikacji. Inicjalizuje renderer i obsługuje błędy.
 
 ### config.py
 Plik konfiguracyjny aplikacji:
-- **Parametry okna**: rozdzielczość, tytuł, FPS
-- **Ustawienia kamery**: prędkość, czułość myszy, ograniczenia
-- **Parametry renderowania**: kolory, clipping planes, FOV
-- **Listy cube map**: dostępne zestawy tekstur
+- **Parametry okna**: 
+    -rozdzielczość
+    -tytuł 
+    -FPS
+- **Ustawienia kamery**: 
+    -prędkość
+    -czułość myszy
+    -ograniczenia
+- **Parametry renderowania**: 
+    -kolory, 
+    -clipping planes, 
+    -FOV
+- **Listy dostępnych cube map**
 
 ### engine/camera.py
 System kamery pierwszoosobowej
 
 #### Klasa Camera
-- **Pozycja**: współrzędne kamery w przestrzeni 3D
-- **Rotacja**: pitch (x) i yaw (y) kamery
-- **Sterowanie**: 
+- Współrzędne kamery w przestrzeni 3D
+- Rotacja pitch (x) i yaw (y) kamery
+- Sterowanie 
   - WASD/strzałki - ruch
   - Mysz - rozglądanie
   - Spacja - ruch w górę
@@ -52,10 +56,11 @@ System renderowania aplikacji.
 #### Klasa CubeMapRenderer
 Zarządza całym procesem renderowania:
 
-##### Główna pętla
+##### Metody
 - `_handle_events()`: Obsługa zdarzeń (zamknięcie, przełączanie cube map)
 - `_render_frame()`: Renderowanie jednej klatki
-- `_switch_cubemap()`: Przełączanie między różnymi środowiskami
+- `_switch_cubemap()`: Przełączanie między różnymi skyboxami
+- `_load_current_skybox()`: 
 
 ### engine/objects.py
 Zawiera funkcje renderowania obiektów 3D.
@@ -63,25 +68,16 @@ Zawiera funkcje renderowania obiektów 3D.
 #### Funkcje renderowania
 
 ##### `draw_skybox(cube_map_id, camera_pos)`
-Renderuje skybox:
-- Wyłącza depth writing i culling
-- Centruje skybox na pozycji kamery
-- Używa cube map jako tekstury tła
+Renderuje skybox, centruje skybox na pozycji kamery, używa cube map jako tekstury tła. Skybox porusza się wraz z kamerą, przez co nie można dotrzeć do krawędzi skyboxa.
 
 ##### `draw_reflective_cube(cube_map_id, camera_pos)`
-Renderuje odbijający sześcian:
-- Oblicza wektory odbić dla każdego wierzchołka
-- Używa cube map do teksturowania powierzchni
+Renderuje odbijający sześcian, oblicza wektory odbić dla każdego wierzchołka, używa cube map do teksturowania powierzchni
 
 ##### `draw_reflective_sphere(cube_map_id, camera_pos)`
-Renderuje odbijającą sferę:
-- Generuje geometrię sfery przez triangulację
-- Oblicza odbicia na podstawie normalnych powierzchni
+ Generuje geometrię sfery przez triangulację i oblicza odbicia na podstawie normalnych powierzchni
 
 ##### `draw_reflective_torus(cube_map_id, camera_pos)`
-Renderuje odbijający torus:
-- Proceduralne generowanie geometrii torusa
-- Zaawansowane obliczenia normalnych dla zakrzywionej powierzchni
+Renderuje odbijający torus i oblicza normalne wymagane do tworzenia odbić
 
 ### engine/cubemap.py
 Obsługuje ładowanie i tworzenie cube map.
@@ -94,7 +90,7 @@ Obsługuje ładowanie i tworzenie cube map.
 Tworzy kolorową teksturę zastępczą dla brakujących plików.
 
 ### engine/utils.py
-Funkcje matematyczne pomocnicze.
+Funkcje matematyczne wymagane do tworzenia efektu odbicia
 
 #### `normalize(v)`
 Normalizuje wektor 3D do długości jednostkowej.
