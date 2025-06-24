@@ -56,7 +56,7 @@ System renderowania aplikacji.
 #### Klasa CubeMapRenderer
 Zarządza całym procesem renderowania
 
-##### Metody
+#### Metody
 - `_handle_events()`: Obsługa zdarzeń (zamknięcie, przełączanie cube map)
 - `_render_frame()`: Renderowanie jednej klatki
 - `_switch_cubemap()`: Przełączanie między różnymi skyboxami
