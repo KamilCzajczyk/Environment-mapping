@@ -23,21 +23,15 @@ Aplikacja 3D implementująca mapowanie środowiska (environment mapping) przy u�
 ### main.py
 Punkt wejściowy aplikacji. Inicjalizuje renderer i obsługuje błędy.
 
-```python
-# Uruchamia główną pętlę renderowania
-renderer = CubeMapRenderer()
-renderer.run()
-```
-
 ### config.py
-Centralna konfiguracja aplikacji zawierająca:
+Plik konfiguracyjny aplikacji:
 - **Parametry okna**: rozdzielczość, tytuł, FPS
 - **Ustawienia kamery**: prędkość, czułość myszy, ograniczenia
 - **Parametry renderowania**: kolory, clipping planes, FOV
 - **Listy cube map**: dostępne zestawy tekstur
 
 ### engine/camera.py
-Implementuje system kamery pierwszoosobowej:
+System kamery pierwszoosobowej
 
 #### Klasa Camera
 - **Pozycja**: współrzędne kamery w przestrzeni 3D
@@ -53,16 +47,10 @@ Implementuje system kamery pierwszoosobowej:
 - `handle_input()`: Obsługuje input z klawiatury i myszy
 
 ### engine/renderer.py
-Główny system renderowania aplikacji.
+System renderowania aplikacji.
 
 #### Klasa CubeMapRenderer
 Zarządza całym procesem renderowania:
-
-##### Inicjalizacja
-- Konfiguracja okna Pygame
-- Ustawienia OpenGL (depth test, culling, tekstury)
-- Ładowanie początkowego cube map
-- Inicjalizacja kamery i oświetlenia
 
 ##### Główna pętla
 - `_handle_events()`: Obsługa zdarzeń (zamknięcie, przełączanie cube map)
@@ -73,7 +61,6 @@ Zarządza całym procesem renderowania:
 Zawiera funkcje renderowania obiektów 3D.
 
 #### Funkcje renderowania
-
 
 ##### `draw_skybox(cube_map_id, camera_pos)`
 Renderuje skybox:
@@ -137,11 +124,6 @@ Aplikacja implementuje environment mapping przez:
 - Kamera patrzeącna ujemny Z
 - Jednostki w metrach (przybliżone)
 
-### Dodawanie nowych obiektów
-1. Implementuj funkcję renderowania w `objects.py`
-2. Oblicz normalne powierzchni dla każdego wierzchołka
-3. Użyj `utils.reflect()` do obliczenia odbić
-4. Dodaj wywołanie w `renderer.py`
 
 ### Modyfikacja parametrów
 Wszystkie kluczowe parametry znajdują się w `config.py`:
