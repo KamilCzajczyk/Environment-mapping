@@ -71,13 +71,11 @@ Zawiera funkcje renderowania obiektów 3D.
 Renderuje skybox, centruje skybox na pozycji kamery, używa cube map jako tekstury tła. Skybox porusza się wraz z kamerą, przez co nie można dotrzeć do krawędzi skyboxa.
 
 - `draw_reflective_cube(cube_map_id, camera_pos)`
-Renderuje odbijający sześcian, oblicza wektory odbić dla każdego wierzchołka, używa cube map do teksturowania powierzchni
-
 - `draw_reflective_sphere(cube_map_id, camera_pos)`
- Generuje geometrię sfery przez triangulację i oblicza odbicia na podstawie normalnych powierzchni
-
 - `draw_reflective_torus(cube_map_id, camera_pos)`
-Renderuje odbijający torus i oblicza normalne wymagane do tworzenia odbić
+
+Te metody renderują odpowiednio sześcian, sferę oraz torus, obliczają wektory normalne oraz odbicia korzystając z funkcji zawartych w `utils.py`
+
 
 ### engine/cubemap.py
 Obsługuje ładowanie i tworzenie cube map.
@@ -90,10 +88,10 @@ Tworzy kolorową teksturę zastępczą dla brakujących plików.
 
 ### engine/utils.py
 Funkcje matematyczne wymagane do tworzenia efektu odbicia
-- `normalize(v)`
+- `normalize(v)`:
 Normalizuje wektor 3D do długości jednostkowej.
 
-- `reflect(incident, normal)`
+- `reflect(incident, normal)`:
 Oblicza wektor odbity na podstawie wektora padającego i normalnej powierzchni.
 
 
