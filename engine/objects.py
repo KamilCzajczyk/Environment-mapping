@@ -74,7 +74,7 @@ def draw_reflective_cube(cube_map_id, camera_pos):
 def draw_reflective_sphere(cube_map_id, camera_pos):
 
     glPushMatrix()
-    glTranslatef(6, 0, 0)
+    glTranslatef(6, 0, 6)
     
     glEnable(GL_TEXTURE_CUBE_MAP)
     glBindTexture(GL_TEXTURE_CUBE_MAP, cube_map_id)
@@ -110,7 +110,7 @@ def draw_reflective_sphere(cube_map_id, camera_pos):
 def draw_reflective_torus(cube_map_id, camera_pos):
 
     glPushMatrix()
-    torus_pos = [-6.0, 0.0, 0.0]
+    torus_pos = [-6.0, 0.0, 6.0]
     glTranslatef(torus_pos[0], torus_pos[1], torus_pos[2])
 
     glEnable(GL_TEXTURE_CUBE_MAP)
