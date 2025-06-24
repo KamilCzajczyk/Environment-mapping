@@ -24,7 +24,9 @@ $ python3 main.py
 ## Project structure
 
 - `bridge/` , `bridge2/` , `yokohama2/` , `yokohama3/` folders with cubemap images
-- `engine/` files needed to run the program 
+- `engine/` files needed to run the program
+- `config.py` configuration file
+- `main.py` main file to run
 
 ## Authors
 
