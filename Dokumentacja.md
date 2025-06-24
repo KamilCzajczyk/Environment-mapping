@@ -4,25 +4,6 @@
 
 Aplikacja 3D implementująca mapowanie środowiska (environment mapping) przy użyciu cube map w OpenGL z biblioteką Pygame. Program renderuje skybox oraz obiekty z odbiciami środowiska, takie jak sześcian, sfera i torus.
 
-## Struktura projektu
-
-```
-projekt/
-├── main.py              # Punkt wejściowy aplikacji
-├── config.py           # Konfiguracja aplikacji
-├── engine/
-│   ├── camera.py       # System kamery
-│   ├── renderer.py     # Główny renderer
-│   ├── objects.py      # Renderowanie obiektów 3D
-│   ├── cubemap.py      # Ładowanie cube map
-│   └── utils.py        # Funkcje pomocnicze
-└── tekstury/           # Foldery z teksturami cube map
-    ├── bridge/
-    ├── yokohama2/
-    ├── yokohama3/
-    └── yokohama4/
-```
-
 ## Funkcjonalności
 
 ### Główne cechy
@@ -93,8 +74,6 @@ Zawiera funkcje renderowania obiektów 3D.
 
 #### Funkcje renderowania
 
-##### `setup_lighting()`
-Konfiguruje oświetlenie OpenGL z jednym źródłem światła.
 
 ##### `draw_skybox(cube_map_id, camera_pos)`
 Renderuje skybox:
@@ -123,8 +102,6 @@ Obsługuje ładowanie i tworzenie cube map.
 #### Funkcja `create_cubemap_from_images(folder, face_files)`
 - Ładuje 6 obrazów reprezentujących ściany sześcianu
 - Tworzy teksturę cube map w OpenGL
-- Implementuje fallback dla brakujących plików
-- Konfiguruje parametry filtrowania tekstur
 
 #### Funkcja `_create_fallback_face(face_target, filename)`
 Tworzy kolorową teksturę zastępczą dla brakujących plików.
@@ -138,36 +115,7 @@ Normalizuje wektor 3D do długości jednostkowej.
 #### `reflect(incident, normal)`
 Oblicza wektor odbity na podstawie wektora padającego i normalnej powierzchni.
 
-## Sterowanie
 
-### Kamera
-- **W/S lub ↑/↓**: Ruch do przodu/tyłu
-- **A/D lub ←/→**: Ruch w lewo/prawo  
-- **Spacja**: Ruch w górę
-- **Shift/C**: Ruch w dół
-- **Mysz + LPM**: Rozglądanie się
-
-### Aplikacja
-- **B**: Przełączanie między różnymi cube map
-- **ESC/Zamknięcie okna**: Wyjście z aplikacji
-
-## Wymagania techniczne
-
-### Biblioteki Python
-- `pygame`: System okien i input
-- `PyOpenGL`: Bindingi OpenGL
-- `PIL (Pillow)`: Ładowanie obrazów
-- `numpy`: Operacje na tablicach
-
-### Formaty tekstur
-- Obsługiwane formaty: JPG, PNG
-- Wymagane 6 plików na cube map:
-  - `px.jpg` - Positive X (prawo)
-  - `nx.jpg` - Negative X (lewo)
-  - `py.jpg` - Positive Y (góra)
-  - `ny.jpg` - Negative Y (dół)
-  - `pz.jpg` - Positive Z (przód)
-  - `nz.jpg` - Negative Z (tył)
 
 ## Szczegóły techniczne
 
@@ -189,18 +137,11 @@ Aplikacja implementuje environment mapping przez:
 - Kamera patrzeącna ujemny Z
 - Jednostki w metrach (przybliżone)
 
-## Rozszerzenia i modyfikacje
-
 ### Dodawanie nowych obiektów
 1. Implementuj funkcję renderowania w `objects.py`
 2. Oblicz normalne powierzchni dla każdego wierzchołka
 3. Użyj `utils.reflect()` do obliczenia odbić
 4. Dodaj wywołanie w `renderer.py`
-
-### Dodawanie nowych cube map
-1. Utwórz folder z 6 obrazami
-2. Dodaj nazwę folderu do `CUBEMAP_SETS` w `config.py`
-3. Upewnij się, że pliki mają poprawne nazwy
 
 ### Modyfikacja parametrów
 Wszystkie kluczowe parametry znajdują się w `config.py`:
@@ -209,23 +150,3 @@ Wszystkie kluczowe parametry znajdują się w `config.py`:
 - Rozdzielczość
 - Kolory tła
 - Parametry projekcji
-
-## Troubleshooting
-
-### Brakujące tekstury
-- Aplikacja automatycznie tworzy kolorowe zamienniki
-- Sprawdź ścieżki do plików i ich nazwy
-- Upewnij się, że obrazy są w formacie RGB
-
-### Problemy z wydajnością
-- Zmniejsz rozdzielczość tekstur
-- Ogranicz liczbę wierzchołków w obiektach
-- Sprawdź sterowniki graficzne
-
-### Błędy OpenGL
-- Upewnij się, że sterowniki obsługują wymagane rozszerzenia
-- Sprawdź dostępność hardware'owego przyspieszenia
-
-## Autor i licencja
-
-Projekt implementujący zaawansowane techniki renderowania 3D w czasie rzeczywistym z użyciem OpenGL i Pythona.
