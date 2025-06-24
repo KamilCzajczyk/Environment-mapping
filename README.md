@@ -2,6 +2,8 @@
 
 ## Description
 
+Our project is a Pygame application using OpenGL to demonstrate environment mapping with interactive object viewing and dynamic reflections. The scene features a reflective cube, sphere, and torus that mirror their surroundings defined by a cubemap. Users can switch between different cubemap sets to see how reflections change with the environment.
+
 ## Requirements
 
 - Python 3.x
