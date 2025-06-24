@@ -6,6 +6,8 @@ Our project is a Pygame application using OpenGL to demonstrate environment mapp
 
 Additional project details can be found in the `Projekt.pdf` file.
 
+The `Dokumentacja.md` file contains technical project information.
+
 ## Requirements
 
 - Python 3.x
